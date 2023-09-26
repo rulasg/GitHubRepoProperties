@@ -1,13 +1,18 @@
 
-function Get-GhRepoPropertiesShema{
+function Get-RepoPropertiesShema{
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][string]$Owner
     )
 
     $command = "orgs/{0}/properties/schema" -f $Owner
+
     $ret = gh api $command
 
-    return $ret
+    if(!$?){
+        throw "Error: $ret"
+    }
 
-} Export-ModuleMember -Function Get-GhRepoPropertiesShema
+    return $ret | ConvertFrom-Json
+
+} Export-ModuleMember -Function Get-RepoPropertiesShema
