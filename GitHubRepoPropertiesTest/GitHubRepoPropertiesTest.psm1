@@ -25,3 +25,4 @@ Foreach($import in @($Public + $Private))
 # Export Public functions ($Public.BaseName) for WIP modules
 # Set variables visible to the module and its functions only
 
+Export-ModuleMember -Function GitHubRepoPropertiesTest_*
