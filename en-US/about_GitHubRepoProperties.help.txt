@@ -1,0 +1,20 @@
+TOPIC
+    about_GitHubRepoProperties
+
+AUTHOR
+    rulasg
+
+COPYRIGHT
+    (c) rulasg. All rights reserved.
+
+SHORT DESCRIPTION
+    Powershell module to manage GitHub Repository Properties
+
+LONG DESCRIPTION
+    Powershell module to manage GitHub Repository Properties
+
+KEYWORDS
+    Powershell Testing UnitTest Module TestingHelper
+
+SEE ALSO
+    https://github.com/rulasg/TestingHelper/
