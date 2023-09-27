@@ -32,7 +32,7 @@ function Set-RepoProperties{
         [parameter(Mandatory)][string]$Value
     )
 
-    $token = $env:GH_TOKEN | ConvertTo-SecureString -AsPlainText
+    $token = Get-Token
 
     $uri = 'https://api.github.com/repos/{0}/{1}/properties' -f $Owner, $Repo 
 
