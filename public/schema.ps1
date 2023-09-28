@@ -2,7 +2,8 @@
 function Get-RepoPropertiesShema{
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory)][string]$Owner
+        [Parameter(Mandatory,ValueFromPipeline,ValueFromPipelineByPropertyName,Position=0)]
+        [string]$Owner
     )
 
     $command = "orgs/{0}/properties/schema" -f $Owner
