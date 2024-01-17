@@ -1,4 +1,4 @@
-# GitHubRepoProperties
+# RepoProperties
 
 Powershell module to manage GitHub Repository Properties
 
