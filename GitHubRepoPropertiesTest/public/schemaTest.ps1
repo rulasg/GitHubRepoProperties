@@ -3,16 +3,16 @@ function GitHubRepoPropertiesTest_Schema_Get{
 
     Assert-NotImplemented
 
-    $result = Get-RepoPropertiesShema -Owner "SolidifyDemo"
+    # $result = Get-RepoPropertiesShema -Owner "SolidifyDemo"
 } 
 
 function GitHubRepoPropertiesTest_Schema_Add_TyeString{
 
     Assert-NotImplemented
 
-    $propName = "Test_$((New-Guid).Guid.Substring(0,8))"
+    # $propName = "Test_$((New-Guid).Guid.Substring(0,8))"
 
-    $result = Add-RepoPropertiesSchema -Owner "SolidifyDemo" -Name $propName -Description "test description"
+    # $result = Add-RepoPropertiesSchema -Owner "SolidifyDemo" -Name $propName -Description "test description"
 }
 
 function GitHubRepoPropertiesTest_Add_TypeSingleSelect{

@@ -2,11 +2,14 @@
 function Get-RepoProperties{
     [CmdletBinding()]
     param(
-        [parameter(Mandatory)][string]$Owner,
-        [parameter(Mandatory)][string]$Repo
+        [parameter(ValueFromPipelineByPropertyName)][string]$Owner,
+        [parameter(ValueFromPipelineByPropertyName)][string]$Repo
     )
 
-    $command = "repos/{0}/{1}/properties" -f $Owner, $Repo
+    # $command = "repos/{0}/{1}/properties" -f $Owner, $Repo
+    $command = Resolve-API REPO_PROPERTIES $Owner $Repo
+
+    $command | Write-Verbose
 
     $result = gh api $command
 
@@ -26,15 +29,22 @@ function Get-RepoProperties{
 function Set-RepoProperties{
     [CmdletBinding()]
     param(
-        [parameter(Mandatory)][string]$Owner,
-        [parameter(Mandatory)][string]$Repo,
+        [parameter(ValueFromPipelineByPropertyName)][string]$Owner,
+        [parameter(ValueFromPipelineByPropertyName)][string]$Repo,
         [parameter(Mandatory)][string]$Property,
         [parameter(Mandatory)][string]$Value
     )
 
     $token = Get-Token
 
-    $uri = 'https://api.github.com/repos/{0}/{1}/properties' -f $Owner, $Repo 
+    $remote = Get-RemoteSplit
+
+    # if owner is null or whitespace, use the remote owner
+    if([string]::IsNullOrWhiteSpace($Owner)){ $Owner = $remote.Owner }
+    if([string]::IsNullOrWhiteSpace($Repo)){ $Repo = $remote.Repo }
+
+    # $uri = 'https://api.github.com/repos/{0}/{1}/properties' -f $Owner, $Repo 
+    $uri = Resolve-API REPO_PROPERTIES $Owner $Repo
 
     $body = @"
     {

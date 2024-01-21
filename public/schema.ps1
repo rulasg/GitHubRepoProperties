@@ -6,7 +6,7 @@ function Get-RepoPropertiesShema{
     )
 
     # $command = "orgs/{0}/properties/schema" -f $Owner
-    $command = Resolve-API -Name SCHEMA -Owner $Owner -WithHost
+    $command = Resolve-API -Name SCHEMA -Owner $Owner
 
     $ret = gh api $command
 
@@ -30,7 +30,7 @@ function Add-RepoPropertiesSchema{
     $token = Get-Token
 
     # $uri = "$($GH_HOST)/$($APIs.SCHEMA)" -f $Owner
-    $uri = Resolve-API -Name SCHEMA -Owner $Owner -WithHost
+    $uri = Resolve-API -Name SCHEMA -Owner $Owner
 
     $body_String = @"
 [
